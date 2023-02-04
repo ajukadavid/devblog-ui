@@ -9,7 +9,11 @@ module.exports = {
     "./app.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        loginBg: "url('./static/login-splash-pic.png')"
+      }
+    },
   },
   plugins: [],
 }

@@ -1,13 +1,10 @@
 <template>
     <div class="w-full flex">
-        <div class="w-1/2 justify-center flex bg-yellow-300 items-center h-screen">
-            <div class="text-4xl">
-                Hello 👋🏼
-            </div>
+        <div class="w-1/2 justify-center flex login__bg items-center h-screen">
         </div>
-        <div class="w-1/2 justify-center flex bg-red-300 items-center h-screen">
-            <div class="text-4xl">
-                Hola 👋🏼
+        <div class="w-1/2 justify-center flex bg-white items-center h-screen">
+            <div>
+                
             </div>
         </div>
     </div>
@@ -18,5 +15,9 @@
 </script>
 
 <style scoped>
+.login__bg {
+    background: url('../static/login-splash-pic.png') no-repeat;
+    background-size: cover;
 
+}
 </style>
