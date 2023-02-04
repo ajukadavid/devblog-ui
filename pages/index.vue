@@ -1,7 +1,9 @@
 <template>
     <div>
-        this is entry file
-    </div>
+        <h1 class="text-3xl text-purple-50 font-bold underline">
+    Hello world!
+  </h1>
+</div>
 </template>
 
 <script setup lang="ts">
