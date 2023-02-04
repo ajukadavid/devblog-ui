@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 module.exports = {
   content: [
     "./components/**/*.{js,vue,ts}",
@@ -14,6 +15,10 @@ module.exports = {
         loginBg: "url('./static/login-splash-pic.png')"
       }
     },
+    colors: {
+      ...colors,
+      'signupBorder': '#5B6BBC'
+    }
   },
   plugins: [],
 }
