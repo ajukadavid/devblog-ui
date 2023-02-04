@@ -1,1 +1,1 @@
-Blog UI for NodeJs Backend Built with NuxtJs, Typescript & TailwindCSS
+Modern Blog UI integrated with NodeJs Backend Built with NuxtJs, Typescript & TailwindCSS
