@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: [
     "./components/**/*.{js,vue,ts}",
@@ -13,7 +15,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         loginBg: "url('./static/login-splash-pic.png')"
-      }
+      },
     },
     colors: {
       ...colors,
@@ -22,3 +24,4 @@ module.exports = {
   },
   plugins: [],
 }
+
