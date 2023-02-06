@@ -10,19 +10,19 @@
                     </div>
                     <div class="mb-6">
                         <label for="username" class="block mb-2 text-base font-mono text-signupBorder">Username</label>
-                        <input type="text" id="username"
+                        <input v-model="username" type="text" id="username"
                             class="w-full border border-signupBorder rounded p-2" required>
                     </div>
                     <div class="mb-6">
                         <label for="email" class="block mb-2 text-base font-mono text-signupBorder">Email
                             address</label>
-                        <input type="email" id="email"
+                        <input v-model="email" type="email" id="email"
                         class="w-full border border-signupBorder rounded p-2"
                             placeholder="john.doe@company.com" required>
                     </div>
                     <div class="mb-6">
                         <label for="password" class="block mb-2 text-base font-mono text-signupBorder">Password</label>
-                        <input type="password" id="password"
+                        <input v-model="password" type="password" id="password"
                         class="w-full border border-signupBorder rounded p-2" required>
                     </div>
                     <div class="mb-6">
@@ -39,7 +39,7 @@
                         <label for="remember" class="ml-2 text-base font-mono text-signupBorder">Remember me</label>
                     </div>
                     <button type="submit"
-                        class="text-white bg-signupBorder font-mono px-8 py-2 border rounded-md ">Submit</button>
+                      @click="handleSignUp"  class="text-white bg-signupBorder font-mono px-8 py-2 border rounded-md ">Submit</button>
                 </form>
 
             </div>
@@ -48,7 +48,19 @@
 </template>
 
 <script setup lang="ts">
+import { signUp } from '~~/services/signup-service';
 
+const username = ref('')
+const password = ref('')
+const email = ref('')
+
+const handleSignUp = () => {
+    const formData = new FormData()
+    formData.append('username', username.value)
+    formData.append('email', email.value)
+    formData.append('password', password.value)
+    let val = signUp(formData)
+}
 </script>
 
 <style scoped>
