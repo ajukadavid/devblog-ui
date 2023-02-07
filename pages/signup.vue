@@ -1,7 +1,7 @@
 <template>
     <div class="w-full flex">
         <div class="w-1/2 j login__bg items-center h-screen">
-            <div class="flex justify-between w-full bg-yellow-400 ml-10 mt-10">
+            <div class="flex justify-between w-full nav__wrapper ml-10 mt-10 rounded">
                 <div>
                     <img src="../static/app-logo.png" />
                 </div>
@@ -88,6 +88,10 @@ const handleSignUp = () => {
     background: url('../static/login-splash-pic.png') no-repeat;
     background-size: cover;
 
+}
+
+.nav__wrapper {
+    backdrop-filter: blur(10px);
 }
 
 input:focus {
