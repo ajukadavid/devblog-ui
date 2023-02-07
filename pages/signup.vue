@@ -1,46 +1,66 @@
 <template>
     <div class="w-full flex">
-        <div class="w-1/2 justify-center flex login__bg items-center h-screen">
+        <div class="w-1/2 j login__bg items-center h-screen">
+            <div class="flex justify-between w-full bg-yellow-400 ml-10 mt-10">
+                <div>
+                    <img src="../static/app-logo.png" />
+                </div>
+                <div class="flex pr-10">
+                    <span>Popular</span>
+                    <span>New</span>
+                    <span>Rea</span>
+                </div>
+            </div>
         </div>
         <div class="w-1/2 justify-center flex bg-white items-center h-screen">
-            <div class="border-2 rounded-lg w-full border-signupBorder p-10 mx-16">
-
-                <form class="w-full">
-                    <div class="grid gap-6 mb-6 md:grid-cols-2">
-                    </div>
-                    <div class="mb-6">
-                        <label for="username" class="block mb-2 text-base font-mono text-signupBorder">Username</label>
-                        <input v-model="username" type="text" id="username"
-                            class="w-full border border-signupBorder rounded p-2" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 text-base font-mono text-signupBorder">Email
-                            address</label>
-                        <input v-model="email" type="email" id="email"
-                        class="w-full border border-signupBorder rounded p-2"
-                            placeholder="john.doe@company.com" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="password" class="block mb-2 text-base font-mono text-signupBorder">Password</label>
-                        <input v-model="password" type="password" id="password"
-                        class="w-full border border-signupBorder rounded p-2" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="confirmPassword" class="block mb-2 text-base font-mono text-signupBorder">Confirm Password</label>
-                        <input type="password" id="confirmPassword"
-                        class="w-full border border-signupBorder rounded p-2" required>
-                    </div>
-                    <div class="flex items-start mb-6 w-full">
-                        <div class="flex items-center h-5 ">
-                            <input id="remember" type="checkbox" value=""
-                                class="w-4 mt-1 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+            <div class="border-2 rounded-lg w-full border-signupBorder p-10 mx-16 flex flex-col justify-items-center ">
+                <div class="flex justify-center">
+                    <span class="text-signupBorder text-2xl font-sans">Sign Up</span>
+                </div>
+                <div>
+                    <form class="w-full">
+                        <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        </div>
+                        <div class="mb-6">
+                            <label for="username" class="block mb-2 text-base font-sans text-gray-700">Username</label>
+                            <input v-model="username" type="text" id="username"
+                                class="w-full border border-signupBorder rounded p-2" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 text-base font-sans text-gray-700">Email
+                                address</label>
+                            <input v-model="email" type="email" id="email"
+                                class="w-full border border-signupBorder rounded p-2" placeholder="john.doe@company.com"
                                 required>
                         </div>
-                        <label for="remember" class="ml-2 text-base font-mono text-signupBorder">Remember me</label>
-                    </div>
-                    <button type="submit"
-                      @click="handleSignUp"  class="text-white bg-signupBorder font-mono px-8 py-2 border rounded-md ">Submit</button>
-                </form>
+                        <div class="mb-6">
+                            <label for="password" class="block mb-2 text-base font-sans text-gray-700">Password</label>
+                            <input v-model="password" type="password" id="password"
+                                class="w-full border border-signupBorder rounded p-2" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="confirmPassword" class="block mb-2 text-base font-sans text-gray-700">Confirm
+                                Password</label>
+                            <input type="password" id="confirmPassword"
+                                class="w-full border border-signupBorder rounded p-2" required>
+                        </div>
+                        <div class="flex items-start mb-6 w-full">
+                            <div class="flex items-center h-5 ">
+                                <input id="remember" type="checkbox" value=""
+                                    class="w-4 mt-1 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                    required>
+                            </div>
+                            <label for="remember" class="ml-2 text-base font-sans text-signupBorder">Remember me</label>
+                        </div>
+                        <div class="flex items-end flex-col my-4">
+                            <span class="text-gray-700">Already have an account?</span>
+                            <span class="text-signupBorder text-md">Log in</span>
+                        </div>
+                        <button type="submit" @click="handleSignUp"
+                            class="text-white bg-signupBorder font-sans px-8 py-2 border rounded-md w-full">Submit</button>
+                    </form>
+                </div>
+
 
             </div>
         </div>
@@ -69,6 +89,7 @@ const handleSignUp = () => {
     background-size: cover;
 
 }
+
 input:focus {
     outline: #5B6BBC;
     border: 2px solid #5B6BBC
