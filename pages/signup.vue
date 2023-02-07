@@ -1,9 +1,9 @@
 <template>
     <div class="w-full flex">
         <div class="w-1/2 j login__bg items-center h-screen">
-            <div class="flex justify-between w-full nav__wrapper ml-10 mt-10 rounded">
-                <div>
-                    <img src="../static/app-logo.png" />
+            <div class="flex justify-between w-full items-center nav__wrapper ml-10 mt-10 rounded">
+                <div class="h-11">
+                    <img src="../static/app-logo.png" class=""/>
                 </div>
                 <div class="flex pr-10">
                     <span>Popular</span>
@@ -92,8 +92,13 @@ const handleSignUp = () => {
 
 .nav__wrapper {
     backdrop-filter: blur(10px);
+    background: white
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 input:focus {
     outline: #5B6BBC;
     border: 2px solid #5B6BBC
