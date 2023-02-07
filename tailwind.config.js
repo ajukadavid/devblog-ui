@@ -19,7 +19,7 @@ module.exports = {
     },
     colors: {
       ...colors,
-      'signupBorder': '#5B6BBC'
+      'signupBorder': '#1B0042'
     }
   },
   plugins: [],
