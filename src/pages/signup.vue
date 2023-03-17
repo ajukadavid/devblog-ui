@@ -16,8 +16,9 @@
         <div class="flex justify-center">
           <span class="text-signupBorder text-2xl font-sans">Sign Up</span>
         </div>
-        <div>
-          <form class="w-full">
+        <div class="flex flex-col items-center ">
+          <ImageUpload class="mt-5"/>
+          <form @click.prevent="" class="w-full">
             <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
             <div class="mb-6">
               <label
