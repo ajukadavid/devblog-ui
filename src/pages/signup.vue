@@ -110,7 +110,7 @@
 </template>
 
 <script setup lang="ts">
-import { signUp } from "~~/services/signup-service";
+import { signUp } from "../services/signup-service";
 
 const username = ref("");
 const password = ref("");
