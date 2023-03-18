@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { signUp } from "../services/signup-service";
+
+const username = ref("");
+const password = ref("");
+const email = ref("");
+const image = ref("")
+const handleImageUpload  = (img:string) => {
+  image.value = img
+}
+const handleSignUp = () => {
+  const formData = new FormData();
+  formData.append("username", username.value);
+  formData.append("email", email.value);
+  formData.append("password", password.value);
+  // formData.append("image", image.value)
+  let val = signUp(formData);
+};
+</script>
+
 <template>
   <div class="w-full flex">
     <div class="w-1/2 login__bg items-center h-screen">
@@ -14,10 +34,10 @@
         class="border-2 rounded-lg w-full border-signupBorder p-10 mx-16 flex flex-col justify-items-center"
       >
         <div class="flex justify-center">
-          <span class="text-signupBorder text-2xl font-sans">Sign Up</span>
+          <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Sign Up</span>
         </div>
         <div class="flex flex-col items-center ">
-          <ImageUpload class="mt-5"/>
+          <ImageUpload class="mt-5" @update:image="handleImageUpload"/>
           <form @click.prevent="" class="w-full">
             <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
             <div class="mb-6">
@@ -96,35 +116,22 @@
               <span class="text-gray-700">Already have an account?</span>
               <span class="text-signupBorder text-md">Log in</span>
             </div>
-            <button
+            <div class="flex w-full justify-center">
+              <button
               type="submit"
               @click="handleSignUp"
-              class="text-white bg-signupBorder font-sans px-8 py-2 border rounded-md w-full"
+              class="text-white bg-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md "
             >
               Submit
             </button>
+            </div>
+          
           </form>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { signUp } from "../services/signup-service";
-
-const username = ref("");
-const password = ref("");
-const email = ref("");
-
-const handleSignUp = () => {
-  const formData = new FormData();
-  formData.append("username", username.value);
-  formData.append("email", email.value);
-  formData.append("password", password.value);
-  let val = signUp(formData);
-};
-</script>
 
 <style scoped>
 .login__bg {
