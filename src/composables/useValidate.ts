@@ -3,19 +3,11 @@ import { required, email, minLength, helpers, sameAs } from '@vuelidate/validato
 import useValidate from '@vuelidate/core'
 
 
-const isPasswordValid  = (value:string) => {
-    const containsUppercase = /[A-Z]/.test(value)
-    const containsLowercase = /[a-z]/.test(value)
-    const containsNumber = /[0-9]/.test(value)
-    const containsSpecial = /[#?!@$%^&*-]/.test(value)
-    return !containsUppercase || !containsLowercase || !containsNumber || !containsSpecial
-  }
-
-export function validateUpdateProfile() {
+export function validateSignUp() {
     const form = reactive({
         username: '' as undefined | string,
         email: '' as undefined | string,
-        password: '' as undefined | string,
+        password: '' as string,
         confirm_password: '' as undefined | string,
     })
 
@@ -27,8 +19,7 @@ export function validateUpdateProfile() {
                 minLength: minLength(3) 
                 
             },
-            password: { required, minLength: minLength(10), isPasswordValid },
-            confirm_password: { required, minLength: minLength(3), sameAs: (form.password) },
+            confirm_password: { required, minLength: minLength(3), sameAs: (form.password) }
         }
     })
 

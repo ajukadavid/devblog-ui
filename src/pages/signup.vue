@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { signUp } from "../services/signup-service";
 import { useCloudinary } from "../composables/useCloudinary";
-const username = ref("");
-const password = ref("");
-const email = ref("");
-const image = ref<File | string>("")
-const handleImageUpload  = (img: File | string) => {
-  image.value = img
-}
+import { validateSignUp } from '../composables/useValidate'
+
+const { form, v$ } = validateSignUp()
+
+const image = ref<File | string>("");
+const handleImageUpload = (img: File | string) => {
+  image.value = img;
+};
 const handleSignUp = async () => {
+  v$.value.$validate()
+    if (v$.value.$invalid) {
+      console.log(v$.value.$errors)
+        return
+    }
   const formData = new FormData();
-  formData.append("username", username.value);
-  formData.append("email", email.value);
-  formData.append("password", password.value);
-  let val = await useCloudinary(image.value as unknown as File)
-  formData.append("image", val)
+  formData.append("username", form.username!);
+  formData.append("email", form.email!);
+  formData.append("password", form.password!);
+  let val = await useCloudinary(image.value as unknown as File);
+  formData.append("image", val);
   let sign = signUp(formData);
 };
 </script>
@@ -35,10 +41,12 @@ const handleSignUp = async () => {
         class="border-2 rounded-lg w-full border-signupBorder p-10 mx-16 flex flex-col justify-items-center"
       >
         <div class="flex justify-center">
-          <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Sign Up</span>
+          <span class="text-signupBorder text-4xl font-bold font-sans mr-1"
+            >Sign Up</span
+          >
         </div>
-        <div class="flex flex-col items-center ">
-          <ImageUpload class="mt-5" @update:image="handleImageUpload"/>
+        <div class="flex flex-col items-center">
+          <ImageUpload class="mt-5" @update:image="handleImageUpload" />
           <form @click.prevent="" class="w-full">
             <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
             <div class="mb-6">
@@ -48,7 +56,7 @@ const handleSignUp = async () => {
                 >Username</label
               >
               <input
-                v-model="username"
+                v-model="form.username"
                 type="text"
                 id="username"
                 class="w-full border border-signupBorder rounded p-2"
@@ -62,7 +70,7 @@ const handleSignUp = async () => {
                 >Email address</label
               >
               <input
-                v-model="email"
+                v-model="form.email"
                 type="email"
                 id="email"
                 class="w-full border border-signupBorder rounded p-2"
@@ -77,7 +85,7 @@ const handleSignUp = async () => {
                 >Password</label
               >
               <input
-                v-model="password"
+                v-model="form.password"
                 type="password"
                 id="password"
                 class="w-full border border-signupBorder rounded p-2"
@@ -95,6 +103,7 @@ const handleSignUp = async () => {
                 id="confirmPassword"
                 class="w-full border border-signupBorder rounded p-2"
                 required
+                v-model="form.confirm_password"
               />
             </div>
             <div class="flex items-start mb-6 w-full">
@@ -119,14 +128,13 @@ const handleSignUp = async () => {
             </div>
             <div class="flex w-full justify-center">
               <button
-              type="submit"
-              @click="handleSignUp"
-              class="text-white bg-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md "
-            >
-              Submit
-            </button>
+                type="submit"
+                @click="handleSignUp"
+                class="text-white bg-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md"
+              >
+                Submit
+              </button>
             </div>
-          
           </form>
         </div>
       </div>
