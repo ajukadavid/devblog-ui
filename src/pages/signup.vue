@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { signUp } from "../services/signup-service";
-
+import { useCloudinary } from "../composables/useCloudinary";
 const username = ref("");
 const password = ref("");
 const email = ref("");
-const image = ref("")
-const handleImageUpload  = (img:string) => {
+const image = ref<File | string>("")
+const handleImageUpload  = (img: File | string) => {
   image.value = img
 }
-const handleSignUp = () => {
+const handleSignUp = async () => {
   const formData = new FormData();
   formData.append("username", username.value);
   formData.append("email", email.value);
   formData.append("password", password.value);
-  // formData.append("image", image.value)
-  let val = signUp(formData);
+  let val = await useCloudinary(image.value as unknown as File)
+  formData.append("image", val)
+  let sign = signUp(formData);
 };
 </script>
 

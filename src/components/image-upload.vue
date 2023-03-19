@@ -7,12 +7,10 @@ const emit = defineEmits(['update:image'])
 const handleFileUpload = async (e:any) => {
    img.value = e.target.files[0]
    url.value = URL.createObjectURL(img.value!)
-
- 
   
    showDelete.value = true
    inputKey.value++
-   emit('update:image', url.value)
+   emit('update:image', img.value)
 }
 const showDelete = ref(false)
 const handleDeleteImage = () => {
