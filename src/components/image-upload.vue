@@ -4,9 +4,12 @@ const img = ref<File | Blob | null>(null);
 const url = ref<string | null>(null);
 const inputKey = ref(0)
 const emit = defineEmits(['update:image'])
-const handleFileUpload = (e:any) => {
+const handleFileUpload = async (e:any) => {
    img.value = e.target.files[0]
    url.value = URL.createObjectURL(img.value!)
+
+ 
+  
    showDelete.value = true
    inputKey.value++
    emit('update:image', url.value)

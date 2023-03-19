@@ -2,13 +2,7 @@
 export default {
     srcDir: 'src/',
     buildModules: ['@nuxt/typescript-build', '@nuxtjs/google-fonts', ],
-    modules: ['nuxt-icon', '@nuxtjs/cloudinary'],
-    cloudinary: {
-      options: {
-        cloudName: 'ddg2lkmjk',
-      },
-      
-    },
+    modules: ['nuxt-icon',],
     css: ['~/assets/css/main.css'],
     postcss: {
         plugins: {
@@ -20,5 +14,11 @@ export default {
       public: {
         API_BASE_URL: 'https://blog-api-zo90.onrender.com/'
       }
+    },
+    app: {
+       head: {
+        script: [
+        ],
+       }
     }
 }
