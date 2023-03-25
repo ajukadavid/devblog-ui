@@ -27,8 +27,8 @@ const handleSignUp = async () => {
 </script>
 
 <template>
-  <div class="w-full flex  bg-red-600 overflow-hidden">
-    <div class="w-1/2 login__bg items-center h-screen">
+  <div class="w-full lg:flex overflow-hidden">
+    <div class="lg:w-1/2 hidden lg:block login__bg lg:items-center lg:h-screen">
       <div class="bg__overlay">
         <div class="flex justify-center w-fit nav__wrapper ml-10 mt-10 rounded">
           <div class="h-11">
@@ -37,9 +37,9 @@ const handleSignUp = async () => {
         </div>
       </div>
     </div>
-    <div class="w-1/2 justify-center flex bg-white items-center h-screen">
+    <div class="lg:w-1/2 w-full lg:justify-center lg:flex bg-white items-center h-screen">
       <div
-        class="border-2 rounded-lg h-full overflow-auto w-full border-signupBorder p-10 mx-16 flex flex-col justify-items-center"
+        class="border-2 rounded-lg h-full overflow-auto w-full border-signupBorder p-10 lg:mx-16 flex flex-col justify-items-center"
       >
         <div class="flex justify-center">
           <span class="text-signupBorder text-4xl font-bold font-sans mr-1"
