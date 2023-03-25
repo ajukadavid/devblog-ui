@@ -153,7 +153,6 @@ const handleSignUp = async () => {
   background-size: cover;
   color: #ffffff;
 }
-
 .bg__overlay {
   background: rgb(27, 11, 66);
   overflow: hidden;
