@@ -11,8 +11,9 @@ const handleImageUpload = (img: File | string) => {
 };
 const handleSignUp = async () => {
     v$.value.$validate()
-    if (v$.value.$invalid) {
-      console.log(v$.value.$touch())
+    vp$.value.$validate()
+    if (v$.value.$invalid || vp$.value.$invalid) {
+      console.log(v$.value.$errors, vp$.value.password.$errors)
         return
     }
   const formData = new FormData();
@@ -49,7 +50,7 @@ const handleSignUp = async () => {
           <ImageUpload class="mt-5" @update:image="handleImageUpload" />
           <form @click.prevent="" class="w-full px-6">
             <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
-            <div class="mb-6">
+            <div class="mb-6 flex flex-col">
               <label
                 for="username"
                 class="block mb-2 text-base font-sans text-gray-700"
@@ -63,7 +64,8 @@ const handleSignUp = async () => {
                 required
               />
             </div>
-            <div class="mb-6">
+            <span v-if="v$.username.$errors.length" class="mb-1 text-red-600">{{ v$.username.$errors[0].$message }}</span>
+            <div class="mb-6 flex flex-col">
               <label
                 for="email"
                 class="block mb-2 text-base font-sans text-gray-700"
@@ -77,8 +79,9 @@ const handleSignUp = async () => {
                 placeholder="john.doe@company.com"
                 required
               />
+              <span v-if="v$.email.$errors.length" class="mb-1 text-red-600">{{ v$.email.$errors[0].$message }}</span>
             </div>
-            <div class="mb-6">
+            <div class="mb-6 flex flex-col">
               <label
                 for="password"
                 class="block mb-2 text-base font-sans text-gray-700"
@@ -91,6 +94,7 @@ const handleSignUp = async () => {
                 class="w-full border border-signupBorder rounded p-2"
                 required
               />
+              <span v-if="vp$.password.$errors.length" class="mb-1 text-red-600">{{ vp$.password.$errors[0].$message }}</span>
             </div>
             <div class="mb-6">
               <label
@@ -105,6 +109,7 @@ const handleSignUp = async () => {
                 required
                 v-model="passwords.confirm_password"
               />
+              <span v-if="vp$.confirm_password.$errors.length" class="mb-1 text-red-600">{{ vp$.confirm_password.$errors[0].$message }}</span>
             </div>
             <div class="flex items-start mb-6 w-full">
               <div class="flex items-center h-5">
