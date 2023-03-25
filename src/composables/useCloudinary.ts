@@ -1,5 +1,4 @@
 import { ref } from "vue";
-import axios from "axios";
 
 const cloudinaryUrl = "https://api.cloudinary.com/v1_1/ddg2lkmjk/image/upload";
 const ImgUrl = ref("");

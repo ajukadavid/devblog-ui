@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { signUp } from "../services/signup-service";
 import { useCloudinary } from "../composables/useCloudinary";
-import { validateSignUp } from '../composables/useValidate'
+import { validateSignUp, validatePassword } from '../composables/useValidate'
 
 const { form, v$ } = validateSignUp()
-
+const {passwords, vp$} = validatePassword()
 const image = ref<File | string>("");
 const handleImageUpload = (img: File | string) => {
   image.value = img;
 };
 const handleSignUp = async () => {
-  // v$.value.$validate()
-  //   if (v$.value.$invalid) {
-  //     console.log(v$.value.$touch())
-  //       return
-  //   }
+    v$.value.$validate()
+    if (v$.value.$invalid) {
+      console.log(v$.value.$touch())
+        return
+    }
   const formData = new FormData();
   formData.append("username", form.username!);
   formData.append("email", form.email!);
-  formData.append("password", form.password!);
+  formData.append("password", passwords.password!);
   let val = await useCloudinary(image.value as unknown as File);
   formData.append("image", val);
   let sign = signUp(formData);
@@ -26,7 +26,7 @@ const handleSignUp = async () => {
 </script>
 
 <template>
-  <div class="w-full flex h-[23px] bg-red-600 overflow-hidden">
+  <div class="w-full flex  bg-red-600 overflow-hidden">
     <div class="w-1/2 login__bg items-center h-screen">
       <div class="bg__overlay">
         <div class="flex justify-center w-fit nav__wrapper ml-10 mt-10 rounded">
@@ -85,7 +85,7 @@ const handleSignUp = async () => {
                 >Password</label
               >
               <input
-                v-model="form.password"
+                v-model="passwords.password"
                 type="password"
                 id="password"
                 class="w-full border border-signupBorder rounded p-2"
@@ -103,7 +103,7 @@ const handleSignUp = async () => {
                 id="confirmPassword"
                 class="w-full border border-signupBorder rounded p-2"
                 required
-                v-model="form.confirm_password"
+                v-model="passwords.confirm_password"
               />
             </div>
             <div class="flex items-start mb-6 w-full">
