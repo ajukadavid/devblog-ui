@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { required, email, minLength, sameAs } from '@vuelidate/validators'
+import { required, email, minLength, sameAs, helpers } from '@vuelidate/validators'
 
 import useValidate from '@vuelidate/core'
 
@@ -42,12 +42,11 @@ export function validatePassword() {
         return {
         password: { 
             required,
-            minLength: minLength(5) 
+            minLength: minLength(5),
         },
             confirm_password: { 
                 required, 
-                minLength: minLength(3) ,
-                sameAsPassword: sameAs(passwords.password)
+                valid: helpers.withMessage('Passwords do not match', sameAs(passwords.password))
             },
 
         }
@@ -60,3 +59,4 @@ export function validatePassword() {
         vp$,
     }
 }
+
