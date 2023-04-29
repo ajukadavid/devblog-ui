@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { signUp } from "../services/signup-service";
+import { signUp } from "../services/auth-service";
 import { useCloudinary } from "../composables/useCloudinary";
 import { validateSignUp, validatePassword } from '../composables/useValidate'
 
@@ -126,10 +126,10 @@ const handleSignUp = async () => {
                 >Remember me</label
               >
             </div>
-            <div class="flex flex-col-reverse">
-              <div class="flex items-center flex-col my-4">
+            <div class="flex lg:flex-col flex-col-reverse">
+              <div class="flex lg:items-end items-center flex-col my-4">
               <span class="text-gray-700">Already have an account?</span>
-              <span class="text-signupBorder text-md">Log in</span>
+              <span @click="$router.push('/login')" class="text-signupBorder text-md cursor-pointer">Log in</span>
             </div>
             <div class="flex justify-center align-se">
               <button
@@ -141,7 +141,6 @@ const handleSignUp = async () => {
               </button>
             </div>
             </div>
-            
           </form>
         </div>
       </div>

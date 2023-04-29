@@ -1,3 +1,8 @@
+<script lang="ts" setup>
+
+
+</script>
+
 <template>
     <div class="w-full lg:flex overflow-hidden h-screen pb-1">
       <div class="lg:w-1/2 hidden  lg:block login__bg lg:items-center lg:h-screen">
@@ -10,9 +15,9 @@
         </div>
       </div>
       <div class="lg:w-1/2 lg:p-4 mb-10 h-screen flex justify-center items-center">
-        <div class="w-full lg:p-0 px-8 py-5  lg:justify-center lg:flex items-center">
+        <div class="w-full lg:px-10  lg:justify-center lg:flex items-center">
         <div
-          class="border-2 rounded-lg w-full border-signupBorder flex flex-col justify-items-center"
+          class="border-2 rounded-lg pb-20 w-full border-signupBorder flex flex-col justify-items-center"
         >
           <div class="flex justify-center mt-20 mb-10">
             <span class="text-signupBorder text-4xl font-bold font-sans mr-1"
@@ -50,6 +55,36 @@
               />
               <!-- <span v-if="vp$.password.$errors.length" class="mb-1 text-red-600">{{ vp$.password.$errors[0].$message }}</span> -->
             </div>
+            <div class="flex items-start mb-6 w-full">
+              <div class="flex items-center h-5">
+                <input
+                  id="remember"
+                  type="checkbox"
+                  value=""
+                  class="w-4 mt-1 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                  required
+                />
+              </div>
+              <label
+                for="remember"
+                class="ml-2 text-base font-sans text-signupBorder"
+                >Remember me</label
+              >
+            </div>
+            <div class="flex lg:flex-col flex-col-reverse">
+              <div class="flex lg:items-end items-center flex-col my-4">
+              <span class="text-gray-700">Don't have an account?</span>
+              <span @click="" class="text-signupBorder text-md cursor-pointer">Sign up</span>
+            </div>
+            <div class="flex justify-center align-se">
+              <button
+                type="submit"
+                class="text-white bg-signupBorder border-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md"
+              >
+                Submit
+              </button>
+            </div>
+            </div>
             </form>
           </div>
         </div>
@@ -59,8 +94,7 @@
     </div>
   </template>
 
-<script lang="ts" setup>
-</script>
+
 
 <style scoped>
 .login__bg {
