@@ -13,7 +13,6 @@ const handleSignUp = async () => {
     v$.value.$validate()
     vp$.value.$validate()
     if (v$.value.$invalid || vp$.value.$invalid) {
-      console.log(v$.value.$errors, vp$.value.password.$errors)
         return
     }
   const formData = new FormData();
@@ -27,19 +26,20 @@ const handleSignUp = async () => {
 </script>
 
 <template>
-  <div class="w-full lg:flex overflow-hidden">
-    <div class="lg:w-1/2 hidden lg:block login__bg lg:items-center lg:h-screen">
+  <div class="w-full lg:flex overflow-hidden h-screen pb-1">
+    <div class="lg:w-1/2 hidden  lg:block login__bg lg:items-center lg:h-screen">
       <div class="bg__overlay">
         <div class="flex justify-center w-fit nav__wrapper ml-10 mt-10 rounded">
-          <div class="h-11">
-            <img src="../static/app-logo.png" class="" />
+          <div class="h-11 ">
+            <img src="../static/app-logo.png" class="w-fit h-fit" />
           </div>
         </div>
       </div>
     </div>
-    <div class="lg:w-1/2 w-full lg:justify-center lg:flex bg-white items-center h-screen">
+    <div class="lg:w-1/2 lg:p-4 mb-10">
+      <div class="w-full lg:p-0 px-8 py-5  lg:justify-center lg:flex bg-white items-center h-screen">
       <div
-        class="border-2 rounded-lg h-full overflow-auto w-full border-signupBorder p-10 lg:mx-16 flex flex-col justify-items-center"
+        class="border-2 rounded-lg h-full overflow-auto w-full border-signupBorder p-5 lg:mx-12 flex flex-col justify-items-center"
       >
         <div class="flex justify-center">
           <span class="text-signupBorder text-4xl font-bold font-sans mr-1"
@@ -48,7 +48,7 @@ const handleSignUp = async () => {
         </div>
         <div class="flex flex-col items-center">
           <ImageUpload class="mt-5" @update:image="handleImageUpload" />
-          <form @click.prevent="" class="w-full px-6">
+          <form @click.prevent="" class="w-full">
             <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
             <div class="mb-6 flex flex-col">
               <label
@@ -127,11 +127,13 @@ const handleSignUp = async () => {
                 >Remember me</label
               >
             </div>
-            <div class="flex items-end flex-col my-4">
+            <div></div>
+            <div class="flex flex-col-reverse">
+              <div class="flex items-center flex-col my-4">
               <span class="text-gray-700">Already have an account?</span>
               <span class="text-signupBorder text-md">Log in</span>
             </div>
-            <div class="flex w-full justify-center">
+            <div class="flex justify-center align-se">
               <button
                 type="submit"
                 @click="handleSignUp"
@@ -140,10 +142,14 @@ const handleSignUp = async () => {
                 Submit
               </button>
             </div>
+            </div>
+            
           </form>
         </div>
       </div>
     </div>
+    </div>
+   
   </div>
 </template>
 
