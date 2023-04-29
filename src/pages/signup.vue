@@ -36,10 +36,10 @@ const handleSignUp = async () => {
         </div>
       </div>
     </div>
-    <div class="lg:w-1/2 lg:p-4 mb-10">
-      <div class="w-full lg:p-0 px-8 py-5  lg:justify-center lg:flex bg-white items-center h-screen">
+    <div class="lg:w-1/2 lg:p-4  flex justify-center items-center">
+      <div class="w-full lg:py-10 px-8 py-10  lg:justify-center lg:flex bg-white items-center h-screen">
       <div
-        class="border-2 rounded-lg h-full overflow-auto w-full border-signupBorder p-5 lg:mx-12 flex flex-col justify-items-center"
+        class="border-2 rounded-lg h-full my-2 overflow-auto w-full border-signupBorder p-5 lg:mx-12 flex flex-col justify-items-center"
       >
         <div class="flex justify-center">
           <span class="text-signupBorder text-4xl font-bold font-sans mr-1"
@@ -48,8 +48,7 @@ const handleSignUp = async () => {
         </div>
         <div class="flex flex-col items-center">
           <ImageUpload class="mt-5" @update:image="handleImageUpload" />
-          <form @click.prevent="" class="w-full">
-            <div class="grid gap-6 mb-6 md:grid-cols-2"></div>
+          <form @click.prevent="" class="w-full mt-3">
             <div class="mb-6 flex flex-col">
               <label
                 for="username"
@@ -127,7 +126,6 @@ const handleSignUp = async () => {
                 >Remember me</label
               >
             </div>
-            <div></div>
             <div class="flex flex-col-reverse">
               <div class="flex items-center flex-col my-4">
               <span class="text-gray-700">Already have an account?</span>
