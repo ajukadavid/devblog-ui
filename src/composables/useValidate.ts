@@ -1,8 +1,14 @@
 import { reactive, computed } from 'vue'
 import { required, email, minLength, sameAs, helpers } from '@vuelidate/validators'
-
 import useValidate from '@vuelidate/core'
 
+const customPasswordValidator = (value:string) =>{
+    const containsUppercase = /[A-Z]/.test(value)
+    const containsLowercase = /[a-z]/.test(value)
+    const containsNumber = /[0-9]/.test(value)
+    const containsSpecial = /[#?!@$%^&*-]/.test(value)
+    return containsUppercase && containsLowercase && containsNumber && containsSpecial
+  }
 
 export function validateSignUp() {
     const form = reactive({
@@ -43,6 +49,10 @@ export function validatePassword() {
         password: { 
             required,
             minLength: minLength(5),
+            valid: helpers.withMessage(
+                'Must contain at least 1 numbers, symbol, upper and lower case letters',
+                customPasswordValidator
+            ),
         },
             confirm_password: { 
                 required, 
@@ -60,3 +70,29 @@ export function validatePassword() {
     }
 }
 
+
+export function validateLogin() {
+    const form = reactive({
+        username: '' as undefined | string,
+        password: '' as undefined | string,
+    })
+
+    const rules = computed(() => {
+        return {
+            password: { required },
+            username: { 
+                required, 
+                minLength: minLength(3) 
+                
+            },
+
+        }
+    })
+
+    const v$ = useValidate(rules, form)
+
+    return {
+        form,
+        v$,
+    }
+}

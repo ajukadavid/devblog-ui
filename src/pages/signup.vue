@@ -12,7 +12,6 @@ const handleImageUpload = (img: File | string) => {
 const handleSignUp = async () => {
     v$.value.$validate()
     vp$.value.$validate()
-    console.log(vp$.value.$errors)
     if (v$.value.$invalid || vp$.value.$invalid) {
         return
     }
@@ -87,13 +86,16 @@ const handleSignUp = async () => {
                 class="block mb-2 text-base font-sans text-gray-700"
                 >Password</label
               >
-              <input
+              <div class="border border-signupBorder rounded">
+                <input
                 v-model="passwords.password"
                 type="password"
                 id="password"
-                class="w-full border border-signupBorder rounded p-2"
+                class="w-full border-0rounded p-2 outline-none"
                 required
               />
+              </div>
+              
               <span v-if="vp$.password.$errors.length" class="mt-2 text-red-600">{{ vp$.password.$errors[0].$message }}</span>
             </div>
             <div class="mb-3">
@@ -117,7 +119,7 @@ const handleSignUp = async () => {
                   id="remember"
                   type="checkbox"
                   value=""
-                  class="w-4 mt-1 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                  class="w-4 mt-1 h-4  rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                   required
                 />
               </div>

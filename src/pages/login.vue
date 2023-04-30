@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { validateLogin } from '../composables/useValidate'
+
+const { v$, form } = validateLogin()
 
 
 </script>
@@ -33,10 +36,11 @@
                 >Email address</label
               >
               <input
-                type="email"
-                id="email"
+                type="username"
+                v-model="form.password"
+                id="username"
                 class="w-full border border-signupBorder rounded p-2"
-                placeholder="john.doe@company.com"
+                placeholder="your username"
                 required
               />
               <!-- <span v-if="v$.email.$errors.length" class="mb-1 text-red-600">{{ v$.email.$errors[0].$message }}</span> -->
@@ -50,6 +54,7 @@
               <input
                 type="password"
                 id="password"
+                v-model="form.password"
                 class="w-full border border-signupBorder rounded p-2"
                 required
               />
@@ -92,7 +97,7 @@
       </div>
      
     </div>
-  </template>
+</template>
 
 
 
