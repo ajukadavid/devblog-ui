@@ -4,6 +4,11 @@ import { logIn } from "../services/auth-service";
 
 const { v$, form } = validateLogin()
 
+const handleLogin = async () => {
+   let b = await v$.value.$validate()
+   console.log(v$.value.$errors)
+   console.log(b)
+}
 
 </script>
 
@@ -84,6 +89,7 @@ const { v$, form } = validateLogin()
             </div>
             <div class="flex justify-center align-center">
               <button
+              @click="handleLogin"
                 type="submit"
                 class="text-white bg-signupBorder border-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md"
               >

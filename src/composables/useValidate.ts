@@ -50,7 +50,7 @@ export function validatePassword() {
             required,
             minLength: minLength(5),
             valid: helpers.withMessage(
-                'Must contain at least 1 numbers, symbol, upper and lower case letters',
+                'Must contain at least 1 number, symbol, upper and lower case letters',
                 customPasswordValidator
             ),
         },

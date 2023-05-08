@@ -62,7 +62,15 @@ const handleSignUp = async () => {
                 class="w-full border border-signupBorder rounded p-2"
                 required
               />
-              <span v-if="v$.username.$errors.length" class="mt-2 text-red-600">{{ v$.username.$errors[0].$message }}</span>
+              <div class="flex flex-wrap" v-if="v$.username.$errors.length">
+                <div v-for="error in v$.username.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
+              
             </div>
             <div class="mb-3 flex flex-col">
               <label
@@ -78,7 +86,14 @@ const handleSignUp = async () => {
                 placeholder="john.doe@company.com"
                 required
               />
-              <span v-if="v$.email.$errors.length" class="mt-2 text-red-600">{{ v$.email.$errors[0].$message }}</span>
+              <div class="flex flex-wrap" v-if="v$.email.$errors.length">
+                <div v-for="error in v$.email.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
             </div>
             <div class="mb-3 flex flex-col">
               <label
@@ -95,9 +110,15 @@ const handleSignUp = async () => {
                 required
               />
               </div>
-              
-              <span v-if="vp$.password.$errors.length" class="mt-2 text-red-600">{{ vp$.password.$errors[0].$message }}</span>
-            </div>
+              <div class="flex flex-wrap" v-if="vp$.password.$errors.length">
+                <div v-for="error in vp$.password.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
+              </div>
             <div class="mb-3">
               <label
                 for="confirmPassword"
@@ -111,7 +132,14 @@ const handleSignUp = async () => {
                 required
                 v-model="passwords.confirm_password"
               />
-              <span v-if="vp$.confirm_password.$errors.length" class="mt-2 text-red-600">{{ vp$.confirm_password.$errors[0].$message }}</span>
+              <div class="flex flex-wrap" v-if="vp$.confirm_password.$errors.length">
+                <div v-for="error in vp$.confirm_password.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
             </div>
             <div class="flex items-start mb-3 w-full">
               <div class="flex items-center h-5">
