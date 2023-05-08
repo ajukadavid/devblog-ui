@@ -5,9 +5,17 @@ import { logIn } from "../services/auth-service";
 const { v$, form } = validateLogin()
 
 const handleLogin = async () => {
-   let b = await v$.value.$validate()
-   console.log(v$.value.$errors)
-   console.log(b)
+  let validate = await v$.value.$validate()
+  if(!validate){
+      return
+  }
+
+  const data = {
+    username: form.username,
+    password: form.password
+  }
+  
+  let b = logIn(data)
 }
 
 </script>
@@ -37,19 +45,26 @@ const handleLogin = async () => {
             <form @click.prevent="" class="w-full px-8">
                 <div class="mb-6 flex flex-col">
               <label
-                for="email"
+                for="username"
                 class="block mb-2 text-base font-sans text-gray-700"
-                >Email address</label
+                >Username</label
               >
               <input
                 type="username"
-                v-model="form.password"
+                v-model="form.username"
                 id="username"
                 class="w-full border border-signupBorder rounded p-2"
                 placeholder="your username"
                 required
               />
-              <!-- <span v-if="v$.email.$errors.length" class="mb-1 text-red-600">{{ v$.email.$errors[0].$message }}</span> -->
+              <div class="flex flex-wrap" v-if="v$.username.$errors.length">
+                <div v-for="error in v$.username.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
             </div>
             <div class="mb-6 flex flex-col">
               <label
@@ -60,11 +75,19 @@ const handleLogin = async () => {
               <input
                 type="password"
                 id="password"
+                placeholder="please type in your password"
                 v-model="form.password"
                 class="w-full border border-signupBorder rounded p-2"
                 required
               />
-              <!-- <span v-if="vp$.password.$errors.length" class="mb-1 text-red-600">{{ vp$.password.$errors[0].$message }}</span> -->
+              <div class="flex flex-wrap" v-if="v$.password.$errors.length">
+                <div v-for="error in v$.password.$errors" class="flex mt-1 align-center justify-center">
+                  <span class="mr-2 mt-[9px] text-[6px]">
+                    ❌
+                  </span>
+                  <span  class="text-red-600 text-[12px] mt-1">{{ error.$message }}</span>
+                </div>
+              </div>
             </div>
             <div class="flex items-start mb-6 w-full">
               <div class="flex items-center h-5">
@@ -102,7 +125,6 @@ const handleLogin = async () => {
         </div>
       </div>
       </div>
-     
     </div>
 </template>
 

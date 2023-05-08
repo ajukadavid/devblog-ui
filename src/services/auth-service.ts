@@ -11,7 +11,7 @@ export const signUp = async (data: FormData) => {
 };
 
 
-export const logIn = async (data: JSON) => {
+export const logIn = async (data: any) => {
   let req = await axios.post(`${BASE_URL}/signIn`, data, {
     headers: {
       "Content-Type": "multipart/form-data",
