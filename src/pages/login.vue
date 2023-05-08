@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { validateLogin } from '../composables/useValidate'
+import { logIn } from "../services/auth-service";
 
 const { v$, form } = validateLogin()
 
@@ -81,7 +82,7 @@ const { v$, form } = validateLogin()
               <span class="text-gray-700">Don't have an account?</span>
               <span @click="" class="text-signupBorder text-md cursor-pointer">Sign up</span>
             </div>
-            <div class="flex justify-center align-se">
+            <div class="flex justify-center align-center">
               <button
                 type="submit"
                 class="text-white bg-signupBorder border-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md"
