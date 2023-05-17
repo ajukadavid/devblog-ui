@@ -2,6 +2,25 @@
 
 const showMenu = ref(false)
 
+const menuItems = ref([
+    {
+    name: 'Popular',
+    id: 0
+    },
+    {
+    name: 'New',
+    id: 1
+    }, 
+    {
+    name: 'Topics',
+    id: 2
+    },
+    {
+    name: 'Create Post',
+    id: 3
+    }
+])
+
 </script>
 
 <template>
@@ -15,12 +34,9 @@ const showMenu = ref(false)
                 </div>
                 <div>
                     <ul class="hidden lg:flex gap-x-8">
-                        <li>Popular</li>
-                        <li>New</li>
-                        <li>Topics</li>
-                        <li>Create Post</li>
+                        <li v-for="item in menuItems" :key="item.id">{{item.name}}</li>
                     </ul>
-                    <div class="block lg:hidden">
+                    <div class="block mr-2 lg:hidden">
                         <div class="space-y-2" @click="showMenu = !showMenu">
                             <div class="w-8 h-0.5 bg-gray-600"></div>
                             <div class="w-8 h-0.5 bg-gray-600"></div>
@@ -30,12 +46,9 @@ const showMenu = ref(false)
                 </div>
             </div>
             <Transition>
-                <div v-if="showMenu" class="w-full bg-yellow-300">
-                    <ul>
-                        <li>Popular</li>
-                        <li>New</li>
-                        <li>Topics</li>
-                        <li>Create Post</li>
+                <div v-if="showMenu" class="w-full ml-auto">
+                    <ul class="flex flex-col ">
+                        <li class="my-6 " v-for="item in menuItems" :key="item.id">{{item.name}}</li>
                     </ul>
                 </div>
             </Transition>
