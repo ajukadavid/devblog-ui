@@ -3,6 +3,8 @@ import { signUp } from "../services/auth-service";
 import { useCloudinary } from "../composables/useCloudinary";
 import { validateSignUp, validatePassword } from '../composables/useValidate'
 
+const $router = useRouter()
+
 const { form, v$ } = validateSignUp()
 const {passwords, vp$} = validatePassword()
 const image = ref<File | string>("");
@@ -21,7 +23,11 @@ const handleSignUp = async () => {
   formData.append("password", passwords.password!);
   let val = await useCloudinary(image.value as unknown as File);
   formData.append("image", val);
-  let sign = signUp(formData);
+  let token = signUp(formData);
+
+  if(!!token) {
+    $router.push('/')
+  }
 };
 </script>
 

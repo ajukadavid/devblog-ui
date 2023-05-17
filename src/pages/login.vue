@@ -4,6 +4,8 @@ import { logIn } from "../services/auth-service";
 
 const { v$, form } = validateLogin()
 
+const $router = useRouter()
+
 const handleLogin = async () => {
   let validate = await v$.value.$validate()
   if(!validate){
@@ -15,7 +17,10 @@ const handleLogin = async () => {
     password: form.password
   }
   
-  let b = logIn(data)
+  let token = logIn(data)
+  if(!!token){
+    $router.push('/')
+  }
 }
 
 </script>
