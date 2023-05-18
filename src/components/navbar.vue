@@ -98,7 +98,7 @@ const menuItems = ref([
 
 .nav__wrapper {
     backdrop-filter: blur(10px);
-    background: white;
+    background: blue;
 }
 
 img {
