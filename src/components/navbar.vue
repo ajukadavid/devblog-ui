@@ -47,8 +47,8 @@ const menuItems = ref([
             </div>
             <Transition>
                 <div v-if="showMenu" class="w-full ml-auto">
-                    <ul class="flex flex-col ">
-                        <li class="my-6 " v-for="item in menuItems" :key="item.id">{{item.name}}</li>
+                    <ul class="flex flex-col nav__links">
+                        <li class="my-6 text-white ml-2 text-2xl " v-for="item in menuItems" :key="item.id">{{item.name}}</li>
                     </ul>
                 </div>
             </Transition>
@@ -65,6 +65,13 @@ const menuItems = ref([
 }
 .v-leave-active {
     animation: slideOut 0.5s;
+}
+
+.nav__links {
+  backdrop-filter: blur(10px);
+  background: rgb(27, 11, 66);
+  opacity: 0.8;
+
 }
 
 @keyframes slidein {

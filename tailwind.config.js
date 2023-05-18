@@ -16,6 +16,11 @@ module.exports = {
       backgroundImage: {
         loginBg: "url('./static/login-splash-pic.png')"
       },
+      fontFamily: {
+        sans: ['Oswald'],
+        kanit: ['Kanit'],
+        display: ['Montserrat', 'Arial', 'sans-serif'],
+    },
     },
     colors: {
       ...colors,
