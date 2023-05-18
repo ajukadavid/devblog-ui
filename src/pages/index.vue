@@ -1,6 +1,6 @@
 <template>
     <div>
-      <Navbar />
+     this is le index
  
 </div>
 </template>
