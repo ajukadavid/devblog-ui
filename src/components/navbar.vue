@@ -27,9 +27,9 @@ const menuItems = ref([
     <div class=" w-full mt-5 h-5">
         <div class="flex flex-col">
             <div class="flex justify-between items-center">
-                <div class="flex justify-center w-fit nav__wrapper rounded">
-                    <div class="h-11 ">
-                        <img src="../static/app-logo.png" class="w-fit h-fit" />
+                <div class="flex w-[90px] justify-center  nav__wrapper rounded">
+                    <div class="h-11 w-full">
+                        <img src="../static/app-logo.png" class="w-full h-fit" />
                     </div>
                 </div>
                 <div>
@@ -52,9 +52,7 @@ const menuItems = ref([
                     </ul>
                 </div>
             </Transition>
-
         </div>
-
     </div>
 </template>
 
