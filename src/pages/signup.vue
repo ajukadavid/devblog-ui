@@ -198,6 +198,7 @@ const handleSignUp = async () => {
   overflow: hidden;
   opacity: 0.4;
   height: 100%;
+  z-index: 2;
 }
 
 .nav__wrapper {

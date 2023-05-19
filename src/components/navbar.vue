@@ -33,7 +33,7 @@ const menuItems = ref([
 </script>
 
 <template>
-    <div class=" w-full h-5 mb-5">
+    <div class=" w-full h-5 mt-3 mb-5">
         <div class="flex flex-col">
             <div class="flex justify-between items-center">
                 <div class="flex w-[90px] h-[30px] justify-center ml-1  nav__wrapper rounded">
