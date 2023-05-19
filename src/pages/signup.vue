@@ -53,7 +53,7 @@ const handleSignUp = async () => {
           >
         </div>
         <div class="flex flex-col items-center">
-          <ImageUpload class="mt-5" @update:image="handleImageUpload" />
+          <ImageUpload titleText="Upload your profile picture" class="mt-5" @update:image="handleImageUpload" />
           <form @click.prevent="" class="w-full mt-3">
             <div class="mb-3 flex flex-col">
               <label

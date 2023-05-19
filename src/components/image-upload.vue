@@ -35,10 +35,17 @@ const handleDeleteImage = () => {
        :key="inputKey"
        @change="handleFileUpload"
        accept="image/*">
-       <div class="flex">
+       <div v-if="!isPostImage" class="flex">
          <div class="border-4 w-[98px] rounded-full border-signupBorder h-[98px] cursor-pointer">
              <img class="w-full h-full rounded-full border-0" :src="url!" v-if="url" />
               <Icon v-if="!url" size="90" @click="imageInput!.click()" class="text-signupBorder" name="material-symbols:account-circle" /> 
+         </div>
+          <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer" name="material-symbols:delete" />     
+       </div>
+       <div v-else class="flex w-full">
+         <div class="border-4 w-full flex justify-center border-signupBorder h-[98px] cursor-pointer">
+             <img class="w-full h-full rounded-full border-0" :src="url!" v-if="url" />
+              <Icon v-if="!url" size="90" @click="imageInput!.click()" class="text-signupBorder" name="material-symbols:landscape-rounded" /> 
          </div>
           <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer" name="material-symbols:delete" />     
        </div>
