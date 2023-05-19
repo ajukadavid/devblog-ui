@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex flex-col lg:block">
      <Navbar/>
         <div class="font-sans">
             <slot />
