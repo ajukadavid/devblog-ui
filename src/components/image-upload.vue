@@ -4,6 +4,10 @@ const img = ref<File | Blob | null>(null);
 const url = ref<string | null>(null);
 const inputKey = ref(0)
 const emit = defineEmits(['update:image'])
+const props = defineProps<{
+  isPostImage?: boolean
+  titleText: string
+}>()
 const handleFileUpload = async (e:any) => {
    img.value = e.target.files[0]
    url.value = URL.createObjectURL(img.value!)
@@ -38,9 +42,11 @@ const handleDeleteImage = () => {
          </div>
           <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer" name="material-symbols:delete" />     
        </div>
-      <span class="mt-4 text-signupBorder">Upload your profile picture</span>
+      <span class="mt-4 text-signupBorder">{{ titleText }}</span>
     </div>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

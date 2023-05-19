@@ -1,7 +1,7 @@
 <template>
     <div>
      <Navbar/>
-        <div class="bg-red-600">
+        <div class="font-sans">
             <slot />
 
         </div>
