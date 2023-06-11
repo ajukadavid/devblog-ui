@@ -3,6 +3,7 @@ import { QuillEditor } from '@vueup/vue-quill';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const image = ref<File | string>("");
+const editor = ref<any>(null)
 const content = ref<any>('')
 
 const handleTextChange = (delta:any) =>{
@@ -16,20 +17,20 @@ const handleTextChange = (delta:any) =>{
 // }).join('');
 
 let output = '';
+console.log(editor.value.getHTML())
 
-for (const { insert } of delta) {
-  if (typeof insert === 'string') {
-    output += insert;
-  } else if (typeof insert === 'object' && insert.hasOwnProperty('ops')) {
-    for (const op of insert.ops) {
-      if (typeof op.insert === 'string') {
-        output += op.insert;
-      }
-    }
-  }
-}
+// for (const { insert } of delta) {
+//   if (typeof insert === 'string') {
+//     output += insert;
+//   } else if (typeof insert === 'object' && insert.hasOwnProperty('ops')) {
+//     for (const op of insert.ops) {
+//       if (typeof op.insert === 'string') {
+//         output += op.insert;
+//       }
+//     }
+//   }
+// }
 
-console.log(output)
 
 return output;
 
@@ -46,8 +47,10 @@ const handleImageUpload = (img: File | string) => {
        <h3 class="text-4xl">Create Post</h3>
        <ImageUpload isPostImage titleText="Add post image" class="mt-5" @update:image="handleImageUpload" />
     <ClientOnly>
-      <QuillEditor theme="snow" v-model:content="content" @update:content="handleTextChange"/>
+      <QuillEditor ref="editor" theme="snow" v-model:content="content" @update:content="handleTextChange"/>
     </ClientOnly>
+
+    
   </div>
 </template>
 <style scoped lang="css">
