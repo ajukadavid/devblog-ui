@@ -43,7 +43,7 @@ const menuItems = ref([
                 </div>
                 <div>
                     <ul class="hidden lg:flex gap-x-8">
-                        <li v-for="item in menuItems" :key="item.id">{{item.name}}</li>
+                        <li class="cursor-pointer" :class="{'mr-5': item.id === 3}" @click="handleRoute(item.route)"  v-for="(item) in menuItems" :key="item.id">{{item.name}}</li>
                     </ul>
                     <div @click="showMenu = !showMenu" class="block mr-2 lg:hidden">
                         <div class="space-y-2">
@@ -57,7 +57,7 @@ const menuItems = ref([
             <Transition>
                 <div v-if="showMenu" class="w-full ml-auto">
                     <ul class="flex flex-col nav__links">
-                        <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl " v-for="item in menuItems" :key="item.id">
+                        <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl cursor-pointer" v-for="item in menuItems" :key="item.id">
                             {{item.name}}
                         </li>
                     </ul>
