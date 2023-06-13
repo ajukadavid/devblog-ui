@@ -44,7 +44,7 @@ const handleDeleteImage = () => {
        </div>
        <div v-else class="flex w-full">
          <div class="border-4 w-full flex justify-center border-signupBorder h-[98px] cursor-pointer">
-             <img class="w-full h-full rounded-full border-0" :src="url!" v-if="url" />
+             <img class="w-full h-full border-0" :src="url!" v-if="url" />
               <Icon v-if="!url" size="90" @click="imageInput!.click()" class="text-signupBorder" name="material-symbols:landscape-rounded" /> 
          </div>
           <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer" name="material-symbols:delete" />     
