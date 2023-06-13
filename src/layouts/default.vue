@@ -1,9 +1,22 @@
+<script setup lang="ts">
+
+const $route = useRoute()
+
+const showNav = computed(() => {
+    if($route.name === 'login' || $route.name === 'signup') {
+        return false
+    } else {
+        return true
+    }
+})
+
+</script>
+
 <template>
     <div class=" flex flex-col justify-center lg:block">
-     <Navbar/>
+     <Navbar v-if="showNav"/>
         <div class="font-sans">
             <slot />
-
         </div>
     </div>
   </template>
