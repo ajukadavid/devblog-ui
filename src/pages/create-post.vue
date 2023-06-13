@@ -6,36 +6,8 @@ const image = ref<File | string>("");
 const editor = ref<any>(null)
 const content = ref<any>('')
 
-const handleTextChange = (delta:any) =>{
-//     let html = delta.slice(0, 500).ops.map(function(op:any) {
-//    if (typeof op.insert !== 'string') return '';
-//    let html = op.insert;
-// //    if (op.attributes.bold) {
-// //       html = '<strong>' + html + '</strong>';
-// //    }
-//    return html;
-// }).join('');
-
-let output = '';
-console.log(editor.value.getHTML())
-
-// for (const { insert } of delta) {
-//   if (typeof insert === 'string') {
-//     output += insert;
-//   } else if (typeof insert === 'object' && insert.hasOwnProperty('ops')) {
-//     for (const op of insert.ops) {
-//       if (typeof op.insert === 'string') {
-//         output += op.insert;
-//       }
-//     }
-//   }
-// }
-
-
-return output;
-
-
-
+const handleTextChange = () =>{
+let val = editor.value.getHTML()
 }
 
 const handleImageUpload = (img: File | string) => {
@@ -48,9 +20,7 @@ const handleImageUpload = (img: File | string) => {
        <ImageUpload isPostImage titleText="Add post image" class="mt-5" @update:image="handleImageUpload" />
     <ClientOnly>
       <QuillEditor ref="editor" theme="snow" v-model:content="content" @update:content="handleTextChange"/>
-    </ClientOnly>
-
-    
+    </ClientOnly>    
   </div>
 </template>
 <style scoped lang="css">
