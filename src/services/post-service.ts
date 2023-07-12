@@ -2,8 +2,10 @@ import { BASE_URL } from "./auth-service";
 import cookie from 'cookiejs'
 import axios from 'axios'
 
+let token = cookie.get('token') 
+
+
 export const createPost = async (title:string, body:string, image?:string) => {
-    let token = cookie.get('token') 
     const data = {
         title, 
         body, 
@@ -14,4 +16,14 @@ export const createPost = async (title:string, body:string, image?:string) => {
             'Authorization': `Bearer ${token}` 
           }
     })
+}
+
+export const getAllPosts = async () => {
+    let res = await axios.get(`${BASE_URL}/api/posts`, {
+        headers: {
+            'Authorization': `Bearer ${token}` 
+          }
+    })
+
+    return res.data
 }
