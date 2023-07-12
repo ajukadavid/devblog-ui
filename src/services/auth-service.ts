@@ -1,5 +1,5 @@
 import axios from 'axios'
-const BASE_URL = 'https://blog-api-zo90.onrender.com'
+export const BASE_URL = 'https://blog-api-zo90.onrender.com'
 import cookie from 'cookiejs'
 
 
