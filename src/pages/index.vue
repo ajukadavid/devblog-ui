@@ -13,8 +13,9 @@
               <img v-if="post.image" :src="post.image" class="w-full" />
               <img v-else src="../assets/download.png" class="w-full" />
             </div>
-            <div class="w-full hover:bg-purple-700 text-white  flex justify-start pl-4 text-xl py-4 bg-signupBorder">
-              <span class="">{{ post.title }}</span>
+            <div class="w-full hover:bg-purple-700 text-white flex-col flex justify-start pl-4 py-4 bg-signupBorder">
+              <span class="text-xl ">{{ post.title }}</span>
+              <span class="text-base mt-3">By: {{ post.user }}</span>
             </div>
           </div>
         </div>
