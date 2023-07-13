@@ -27,6 +27,11 @@ const menuItems = ref([
         name: 'Create Post',
         id: 3,
         route: '/create-post'
+    },
+    {
+        name: 'Log out',
+        id: 4,
+        route: '/login'
     }
 ])
 
