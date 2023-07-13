@@ -27,3 +27,13 @@ export const getAllPosts = async () => {
 
     return res.data
 }
+
+export const getOnePost = async (id:string) => {
+    let res = await axios.get(`${BASE_URL}/api/post/view/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}` 
+          }
+    })
+
+    return res
+}   

@@ -30,19 +30,7 @@ import { getAllPosts } from '../services/post-service'
 let $router = useRouter()
 const posts = ref<any>([])
 const postsLoading = ref(false)
-const scroll = () => {
-  window.onscroll = () => {
-    let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
 
-    if (bottomOfWindow) {
-      console.log('at botom')
-      // this.page++
-      // if(this.rawObj.next){
-      //     this.fetchData()
-      // }
-    }
-  }
-}
 onMounted(async () => {
   postsLoading.value = true
   let val = await getAllPosts()
