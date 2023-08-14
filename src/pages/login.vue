@@ -5,7 +5,7 @@ import { logIn } from "../services/auth-service";
 const { v$, form } = validateLogin()
 
 const $router = useRouter()
-
+const errMsg = ref('')
 const handleLogin = async () => {
   let validate = await v$.value.$validate()
   if (!validate) {
@@ -17,10 +17,21 @@ const handleLogin = async () => {
     password: form.password
   }
 
-  let token = logIn(data)
-  if (!!token) {
-    $router.push('/')
+
+  const loginResult = await logIn(data);
+
+  if (loginResult.error) {
+    errMsg.value = loginResult.error.error
+    console.error("Login error:", loginResult.error);
+  } else {
+    console.log("Login successful. Data:", loginResult.data);
   }
+
+  // let token = await logIn(data)
+  // console.log(token)
+  // if (!!token) {
+  //   // $router.push('/')
+  // }
 }
 
 </script>
@@ -41,7 +52,7 @@ const handleLogin = async () => {
         <div class="w-full lg:px-10  lg:justify-center lg:flex items-center">
           <div class="border-2 rounded-lg pb-20 w-full border-signupBorder shadow-lg flex flex-col justify-items-center">
             <div class="flex justify-center mt-20 mb-10">
-              <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Login</span>
+              <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Login {{ errMsg }}</span>
             </div>
             <div class="flex flex-col items-center">
               <form @click.prevent="" class="w-full px-8">

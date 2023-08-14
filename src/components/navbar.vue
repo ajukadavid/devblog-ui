@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import cookie from 'cookiejs'
+let token = cookie.get("token")
 
 const showMenu = ref(false)
 const $router = useRouter()
@@ -29,7 +31,7 @@ const menuItems = ref([
         route: '/create-post'
     },
     {
-        name: 'Log out',
+        name: token ? 'Log Out' : 'Log In',
         id: 4,
         route: '/login'
     }
@@ -40,7 +42,7 @@ const menuItems = ref([
 <template>
     <div class=" w-full h-5  mb-5">
         <div class="flex flex-col ">
-            <div class="fixed top-0 w-full">
+            <div class="fixed top-0 w-full px-3">
                 <div class="flex bg-white py-4 w-full justify-between items-center">
                     <div class="flex w-[90px] h-[30px] justify-center ml-1  nav__wrapper rounded">
                         <div class="w-full">
@@ -48,6 +50,7 @@ const menuItems = ref([
                         </div>
                     </div>
                     <div>
+
                         <ul class="hidden lg:flex gap-x-8">
                             <li class="cursor-pointer" :class="{ 'mr-5': item.id === 3 }" @click="handleRoute(item.route)"
                                 v-for="(item) in menuItems" :key="item.id">{{ item.name }}</li>
@@ -65,6 +68,7 @@ const menuItems = ref([
 
             <Transition>
                 <div v-if="showMenu" class="w-full ml-auto">
+
                     <ul class="flex flex-col nav__links">
                         <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl cursor-pointer"
                             v-for="item in menuItems" :key="item.id">
