@@ -15,7 +15,7 @@ const showNav = computed(() => {
 <template>
     <div class=" flex flex-col justify-center lg:block">
         <Navbar v-if="showNav" />
-        <div class="font-sans mt-6">
+        <div class="font-sans">
             <slot />
         </div>
     </div>

@@ -22,7 +22,7 @@ export const logIn = async (data: any) => {
         "Content-Type": "application/json",
       },
     });
-    cookie("token", response.data.token, 7)
+    cookie("token", response.data.token, 3)
     return {
       error: null,
       data: response.data,

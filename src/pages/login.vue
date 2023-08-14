@@ -1,11 +1,18 @@
 <script lang="ts" setup>
 import { validateLogin } from '../composables/useValidate'
 import { logIn } from "../services/auth-service";
+import cookie from 'cookiejs'
 
 const { v$, form } = validateLogin()
 
 const $router = useRouter()
 const errMsg = ref('')
+const checkbox = ref<HTMLInputElement | null>(null)
+const isChecked = ref(false)
+
+const handleRemember = (e: Event) => {
+  isChecked.value = checkbox.value!.checked
+}
 const handleLogin = async () => {
   let validate = await v$.value.$validate()
   if (!validate) {
@@ -24,14 +31,15 @@ const handleLogin = async () => {
     errMsg.value = loginResult.error.error
     console.error("Login error:", loginResult.error);
   } else {
-    console.log("Login successful. Data:", loginResult.data);
+    if (isChecked.value) {
+      cookie("token", loginResult.data.token, 7)
+    } else {
+      cookie("token", loginResult.data.token, 1)
+
+    }
+    $router.push('/')
   }
 
-  // let token = await logIn(data)
-  // console.log(token)
-  // if (!!token) {
-  //   // $router.push('/')
-  // }
 }
 
 </script>
@@ -52,9 +60,10 @@ const handleLogin = async () => {
         <div class="w-full lg:px-10  lg:justify-center lg:flex items-center">
           <div class="border-2 rounded-lg pb-20 w-full border-signupBorder shadow-lg flex flex-col justify-items-center">
             <div class="flex justify-center mt-20 mb-10">
-              <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Login {{ errMsg }}</span>
+              <span class="text-signupBorder text-4xl font-bold font-sans mr-1">Login </span>
             </div>
             <div class="flex flex-col items-center">
+
               <form @click.prevent="" class="w-full px-8">
                 <div class="mb-6 flex flex-col">
                   <label for="username" class="block mb-2 text-base font-sans text-gray-700">Username</label>
@@ -82,13 +91,13 @@ const handleLogin = async () => {
                     </div>
                   </div>
                 </div>
+              </form>
+              <div class="w-full px-8">
                 <div class="flex items-start mb-6 w-full">
                   <div class="flex items-center h-5">
-                    <input id="remember" type="checkbox" value=""
-                      class="w-4 mt-1 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required />
+                    <input ref="checkbox" id="remember" type="checkbox" @change="handleRemember" class="w-4 h-4" />
                   </div>
-                  <label for="remember" class="ml-2 text-base font-sans text-signupBorder">Remember me</label>
+                  <label for="remember" class="ml-2">Remember me</label>
                 </div>
                 <div class="flex lg:flex-col flex-col-reverse">
                   <div class="flex lg:items-end items-center flex-col my-4">
@@ -102,7 +111,9 @@ const handleLogin = async () => {
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
+
+
             </div>
           </div>
         </div>
@@ -110,8 +121,6 @@ const handleLogin = async () => {
     </div>
   </div>
 </template>
-
-
 
 <style scoped>
 .login__bg {
