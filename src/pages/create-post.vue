@@ -38,7 +38,7 @@ const handleCreatePost = async () => {
 }
 </script>
 <template>
-  <div class="mx-2 flex flex-col justify-center">
+  <div class="mx-2 flex flex-col justify-center pt-10">
     <div class="w-full my-2 justify-center flex">
       <h3 class="text-3xl">Create Post</h3>
     </div>
