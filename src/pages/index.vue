@@ -1,5 +1,5 @@
 <template>
-  <div class=" mx-4">
+  <div class=" mx-4 pt-10">
     <span class="text-2xl text-signupBorder font-bold my-4">Recent posts</span>
     <div v-if="postsLoading" class="h-screen w-screen flex items-center justify-center">
       <Spinner />

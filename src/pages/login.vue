@@ -9,6 +9,7 @@ const $router = useRouter()
 const errMsg = ref('')
 const checkbox = ref<HTMLInputElement | null>(null)
 const isChecked = ref(false)
+const isLoading = ref(false)
 
 const handleRemember = (e: Event) => {
   isChecked.value = checkbox.value!.checked
@@ -24,12 +25,13 @@ const handleLogin = async () => {
     password: form.password
   }
 
+  isLoading.value = true
 
   const loginResult = await logIn(data);
 
   if (loginResult.error) {
     errMsg.value = loginResult.error.error
-    console.error("Login error:", loginResult.error);
+    isLoading.value = false
   } else {
     if (isChecked.value) {
       cookie("token", loginResult.data.token, 7)
@@ -37,6 +39,7 @@ const handleLogin = async () => {
       cookie("token", loginResult.data.token, 1)
 
     }
+    isLoading.value = false
     $router.push('/')
   }
 
@@ -105,7 +108,8 @@ const handleLogin = async () => {
                     <span @click="" class="text-signupBorder text-md cursor-pointer">Sign up</span>
                   </div>
                   <div class="flex justify-center align-center">
-                    <button @click="handleLogin" type="submit"
+                    <Spinner v-if="isLoading" />
+                    <button v-else @click="handleLogin" type="submit"
                       class="text-white bg-signupBorder border-signupBorder font-sans cursor-pointer px-28 py-2 border rounded-md">
                       Submit
                     </button>

@@ -67,14 +67,19 @@ const menuItems = ref([
             </div>
 
             <Transition>
-                <div v-if="showMenu" class="w-full ml-auto">
+                <div v-if="showMenu" class="w-full flex ml-auto nav__links">
+                    <div class="w-full">
+                        <ul class="flex flex-col ">
+                            <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl cursor-pointer"
+                                v-for="item in menuItems" :key="item.id">
+                                {{ item.name }}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-red-700">
+                        hello
+                    </div>
 
-                    <ul class="flex flex-col nav__links">
-                        <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl cursor-pointer"
-                            v-for="item in menuItems" :key="item.id">
-                            {{ item.name }}
-                        </li>
-                    </ul>
                 </div>
             </Transition>
         </div>
