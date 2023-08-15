@@ -67,7 +67,7 @@ const menuItems = ref([
             </div>
 
             <Transition>
-                <div v-if="showMenu" class="w-full flex ml-auto nav__links">
+                <div v-if="showMenu" class="w-full flex justify-center  ml-auto nav__links">
                     <div class="w-full">
                         <ul class="flex flex-col ">
                             <li @click="handleRoute(item.route)" class="my-6 text-white ml-2 text-2xl cursor-pointer"
@@ -76,10 +76,10 @@ const menuItems = ref([
                             </li>
                         </ul>
                     </div>
-                    <div class="text-red-700">
-                        hello
+                    <div class="text-white mt-5 mr-5">
+                        <Icon size="30" @click="showMenu = !showMenu" class="cursor-pointer"
+                            name="material-symbols:cancel-outline" />
                     </div>
-
                 </div>
             </Transition>
         </div>
