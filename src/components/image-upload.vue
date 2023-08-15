@@ -41,16 +41,24 @@ const handleDeleteImage = () => {
         <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer"
           name="material-symbols:delete" />
       </div>
-      <div v-else class="flex w-full">
-        <div class="border-4 w-full flex justify-center border-signupBorder h-[98px] cursor-pointer">
-          <img class="w-full h-full border-0" :src="url!" v-if="url" />
-          <Icon v-if="!url" size="90" @click="imageInput!.click()" class="text-signupBorder"
-            name="material-symbols:landscape-rounded" />
+
+      <div v-else class="flex flex-col w-full">
+        <div>
+          <span class="mt-4 text-signupBorder">{{ titleText }}</span>
         </div>
-        <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer"
-          name="material-symbols:delete" />
+        <div class="flex gap-2 mt-3 w-fit">
+          <div class="border-4 w-fit flex justify-center border-signupBorder h-[98px] cursor-pointer">
+
+            <img class="w-full h-full border-0" :src="url!" v-if="url" />
+            <Icon v-if="!url" size="90" @click="imageInput!.click()" class="text-signupBorder"
+              name="material-symbols:landscape-rounded" />
+
+          </div>
+          <Icon v-if="showDelete" size="20" @click="handleDeleteImage" class="text-red-600 self-end cursor-pointer"
+            name="material-symbols:delete" />
+        </div>
+
       </div>
-      <span class="mt-4 text-signupBorder">{{ titleText }}</span>
     </div>
   </section>
 </template>
