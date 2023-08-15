@@ -42,7 +42,7 @@ const handleDeleteImage = () => {
           name="material-symbols:delete" />
       </div>
 
-      <div v-else class="flex flex-col w-full">
+      <div v-else class="flex items-center flex-col w-full">
         <div>
           <span class="mt-4 text-signupBorder">{{ titleText }}</span>
         </div>
