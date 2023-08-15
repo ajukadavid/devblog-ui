@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pt-10">
 
         <div v-if="loading" class="flex items-center justify-center h-screen w-full">
             <spinner />
@@ -28,7 +28,12 @@ const post = ref<any>({})
 onMounted(async () => {
     loading.value = true
     let res = await getOnePost($route.params.id as unknown as string)
-    post.value = res.data.data
-    loading.value = false
+    if (!!res.data.data) {
+        post.value = res.data.data
+        loading.value = false
+    } else {
+        console.log(res)
+    }
+
 })
 </script>

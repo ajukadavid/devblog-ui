@@ -28,7 +28,6 @@ const handleCreatePost = async () => {
   isLoading.value = true
   try {
     let res = await createPost(title.value, body.value, image.value as unknown as string)
-    console.log(res)
     isLoading.value = false
     $router.push('/')
   } catch (err) {

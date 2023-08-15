@@ -11,20 +11,20 @@ const handleRoute = (route: string) => {
 }
 const menuItems = ref([
     {
-        name: 'Popular',
+        name: 'Home',
         id: 0,
         route: '/popular'
     },
-    {
-        name: 'New',
-        id: 1,
-        route: '/new'
-    },
-    {
-        name: 'Topics',
-        id: 2,
-        route: '/topics'
-    },
+    // {
+    //     name: 'New',
+    //     id: 1,
+    //     route: '/new'
+    // },
+    // {
+    //     name: 'Topics',
+    //     id: 2,
+    //     route: '/topics'
+    // },
     {
         name: 'Create Post',
         id: 3,
