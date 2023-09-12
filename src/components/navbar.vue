@@ -6,8 +6,15 @@ const showMenu = ref(false)
 const $router = useRouter()
 
 const handleRoute = (route: string) => {
-    $router.push(route)
+    if(route === 'Log Out'') {
+        cookie.remove('token')
+            $router.push(route)
+
+    } else {
+        $router.push(route)
     showMenu.value = false
+    }
+    
 }
 const menuItems = ref([
     {

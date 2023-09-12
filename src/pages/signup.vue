@@ -27,9 +27,8 @@ const handleSignUp = async () => {
   let t;
   try {
     let token = await signUp(formData);
-    console.log(token)
     if (!!token) {
-      $router.push('/')
+      location.reload()
     }
 
   } catch (error) {
