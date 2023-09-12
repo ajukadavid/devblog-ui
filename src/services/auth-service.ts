@@ -10,7 +10,7 @@ export const signUp = async (data: FormData) => {
       },
     })
     cookie("token", req.data.token, 7)
-    req.data.token
+    return req.data.token
 };
 
 

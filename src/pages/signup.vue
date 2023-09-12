@@ -23,12 +23,18 @@ const handleSignUp = async () => {
   formData.append("password", passwords.password!);
   let val = await useCloudinary(image.value as unknown as File);
   formData.append("image", val);
-  let token = signUp(formData);
+  let t;
+  try {
+    let token = await signUp(formData);
+    if (!!token) {
+      $router.push('/')
+    }
 
-  if (!!token) {
-    location.reload()
-    $router.push('/')
+  } catch (error) {
+
   }
+
+
 };
 </script>
 

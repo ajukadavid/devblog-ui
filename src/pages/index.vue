@@ -30,13 +30,16 @@ const posts = ref<any>([])
 const postsLoading = ref(false)
 
 onMounted(async () => {
+
+  let token = cookie.get("token")
+  if (!token) {
+    location.reload()
+    $router.push('/login')
+  }
   postsLoading.value = true
   let val = await getAllPosts()
   posts.value = val.data
   postsLoading.value = false
-  let token = cookie.get("token")
-  if (!token) {
-    $router.push('/signup')
-  }
+
 })
 </script>

@@ -106,7 +106,7 @@ const handleLogin = async () => {
                 <div class="flex lg:flex-col flex-col-reverse">
                   <div class="flex lg:items-end items-center flex-col my-4">
                     <span class="text-gray-700">Don't have an account?</span>
-                    <span @click="" class="text-signupBorder text-md cursor-pointer">Sign up</span>
+                    <span @click="$router.push('/signup')" class="text-signupBorder text-md cursor-pointer">Sign up</span>
                   </div>
                   <div class="flex justify-center align-center">
                     <Spinner v-if="isLoading" />
