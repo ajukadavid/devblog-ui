@@ -40,6 +40,7 @@ const handleLogin = async () => {
 
     }
     isLoading.value = false
+    location.reload()
     $router.push('/')
   }
 
