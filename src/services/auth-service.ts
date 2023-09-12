@@ -10,6 +10,7 @@ export const signUp = async (data: FormData) => {
       },
     })
     cookie("token", req.data.token, 7)
+    location.reload()
     return req.data.token
 };
 
@@ -23,6 +24,7 @@ export const logIn = async (data: any) => {
       },
     });
     cookie("token", response.data.token, 3)
+    location.reload()
     return {
       error: null,
       data: response.data,

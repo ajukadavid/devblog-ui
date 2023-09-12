@@ -33,11 +33,11 @@ onMounted(async () => {
 
   let token = cookie.get("token")
   if (!token) {
-    location.reload()
     $router.push('/login')
   }
   postsLoading.value = true
   let val = await getAllPosts()
+
   posts.value = val.data
   postsLoading.value = false
 

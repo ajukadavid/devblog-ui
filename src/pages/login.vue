@@ -40,11 +40,17 @@ const handleLogin = async () => {
 
     }
     isLoading.value = false
-    location.reload()
     $router.push('/')
   }
 
 }
+
+onMounted(() => {
+  let token = cookie.get("token")
+  if (!!token) {
+    $router.push('/')
+  }
+})
 
 </script>
 

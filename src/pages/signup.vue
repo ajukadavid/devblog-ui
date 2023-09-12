@@ -2,6 +2,7 @@
 import { signUp } from "../services/auth-service";
 import { useCloudinary } from "../composables/useCloudinary";
 import { validateSignUp, validatePassword } from '../composables/useValidate'
+import cookie from 'cookiejs'
 
 const $router = useRouter()
 
@@ -26,6 +27,7 @@ const handleSignUp = async () => {
   let t;
   try {
     let token = await signUp(formData);
+    console.log(token)
     if (!!token) {
       $router.push('/')
     }
@@ -36,6 +38,13 @@ const handleSignUp = async () => {
 
 
 };
+
+onMounted(() => {
+  let token = cookie.get("token")
+  if (!!token) {
+    $router.push('/')
+  }
+})
 </script>
 
 <template>
