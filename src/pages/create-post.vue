@@ -37,11 +37,11 @@ const handleCreatePost = async () => {
 }
 </script>
 <template>
-  <div class="mx-2 flex flex-col justify-center pt-10">
+  <div class="mx-2 flex px-10 flex-col justify-center pt-10">
     <div class="w-full my-2 justify-center flex">
       <h3 class="text-3xl">Create Post</h3>
     </div>
-    <div class="my-4 w-full flex">
+    <div class="my-4 w-full flex ">
       <span class="mr-3 text-signupBorder">Title:</span>
       <input type="text" placeholder="post title" v-model="title" class="outline-signupBorder w-full pl-2" />
     </div>

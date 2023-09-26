@@ -37,3 +37,13 @@ export const getOnePost = async (id:string) => {
 
     return res
 }   
+
+export const getMyPosts = async (id:string) => {
+    let res = await axios.get(`${BASE_URL}/api/post/user/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}` 
+          }
+    })
+
+    return res
+}   

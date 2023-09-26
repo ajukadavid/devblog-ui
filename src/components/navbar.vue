@@ -28,11 +28,11 @@ const menuItems = ref([
     //     id: 1,
     //     route: '/new'
     // },
-    // {
-    //     name: 'Topics',
-    //     id: 2,
-    //     route: '/topics'
-    // },
+    {
+        name: 'Manage Content',
+        id: 2,
+        route: '/manage'
+    },
     {
         name: 'Create Post',
         id: 3,
