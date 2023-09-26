@@ -6,7 +6,8 @@ const showMenu = ref(false)
 const $router = useRouter()
 
 const handleRoute = (route: string) => {
-    if (route === 'Log Out') {
+    console.log(route)
+    if (route === '/login') {
         cookie.remove('token')
         $router.push(route)
 
@@ -63,7 +64,7 @@ const menuItems = ref([
                                 v-for="(item) in menuItems" :key="item.id">{{ item.name }}</li>
                         </ul>
                         <div @click="showMenu = !showMenu" class="block mr-2 lg:hidden">
-                            <div class="space-y-2">
+                            <div class="space-y-2 cursor-pointer">
                                 <div class="w-8 h-0.5 bg-gray-600"></div>
                                 <div class="w-8 h-0.5 bg-gray-600"></div>
                                 <div class="w-8 h-0.5 bg-gray-600"></div>
@@ -108,6 +109,9 @@ const menuItems = ref([
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.2px);
     -webkit-backdrop-filter: blur(1.2px);
+    position: fixed;
+    top: 0;
+    left: 0;
     border: 1px solid rgba(27, 11, 66, 0.25);
 
 }
