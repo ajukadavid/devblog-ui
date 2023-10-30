@@ -55,7 +55,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full px-5">
+  <div class="w-full">
     <div class="w-full lg:flex overflow-hidden h-screen pb-1">
       <div class="lg:w-1/2 hidden  lg:block login__bg lg:items-center lg:h-screen">
         <div class="bg__overlay">

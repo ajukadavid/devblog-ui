@@ -23,6 +23,7 @@ export const logIn = async (data: any) => {
         "Content-Type": "application/json",
       },
     });
+    console.log(response.data.id)
     cookie("token", response.data.token, 3)
     location.reload()
     return {
