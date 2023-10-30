@@ -30,6 +30,7 @@
     "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.3.2",
     "cookiejs": "^2.1.2",
+    "dayjs": "^1.11.10",
     "nuxt-icon": "^0.3.3",
     "pinia": "2.0.36",
     "quill": "1.3.6",

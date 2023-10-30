@@ -4,17 +4,23 @@
     <div v-if="postsLoading" class="h-screen w-screen flex items-center justify-center">
       <Spinner />
     </div>
-    <div v-else class="d-flex flex-col gap-4 w-full h-screen pb-10">
+    <div v-else class="flex lg:flex-row lg:flex-wrap flex-col gap-4 w-full h-screen pb-10">
       <div @click="$router.push(`posts/${post.id}`)" v-for="post in posts" :key="post.id"
-        class="cursor-pointer w-full shadow-sm my-2 rounded-lg border-4 border-signupBorder">
-        <div class="w-full">
-          <div>
-            <img v-if="post.image" :src="post.image" class="w-full" />
-            <img v-else src="../assets/download.png" class="w-full" />
+        class="cursor-pointer lg:w-80 w-full shadow-lg my-2 rounded-lg border-4 border-transparent bg-transparent">
+        <div class="w-full flex flex-col place-content-between">
+          <div class="self h-60">
+            <img v-if="post.image" :src="post.image" class="w-full h-full" />
+            <img v-else src="../assets/download.png" class="w-full h-full" />
           </div>
-          <div class="w-full hover:bg-purple-700 text-white flex-col flex justify-start pl-4 py-3 bg-signupBorder">
-            <span class="text-xl ">{{ post.title }}</span>
-            <span class="text-base mt-3">By: {{ post.user }}</span>
+          <div class="w-full hover:bg-slate-700 text-white items-center flex justify-between pl-4 py-3 bg-slate-800">
+            <div class="flex flex-col">
+              <span class="text-xl ">{{ post.title }}</span>
+            <span class="text-base mt-3">Author: {{ post.user }}</span>
+            </div>
+            <div>
+                {{ post.createdAt }}
+            </div>
+         
           </div>
         </div>
       </div>
